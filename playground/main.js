@@ -1,4 +1,4 @@
-import { initCursorEffects } from '../dist/runtime.js';
+import { initCursorEffects } from './runtime.js';
 
 // Initialize all cursor effects globally
 const cleanup = initCursorEffects();

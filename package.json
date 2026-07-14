@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node -e \"require('fs').copyFileSync('dist/runtime.js', 'playground/runtime.js')\"",
     "dev": "tsc --watch",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
