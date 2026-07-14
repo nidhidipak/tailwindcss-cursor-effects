@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Effects Playground</title>
+  <link href="output.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-12">
+  
+  <div class="max-w-4xl mx-auto space-y-16">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 cursor-text-mask">Tailwind Cursor Effects</h1>
+      <p class="text-slate-400">Hover over the elements below to see the interactive cursor utilities in action!</p>
+    </div>
+
+    <!-- Magnetic & Physics Buttons -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 border-b border-slate-700 pb-2">Magnetic & Physics Buttons</h2>
+      <div class="flex flex-wrap gap-6 items-center">
+        <!-- Default -->
+        <button class="cursor-magnetic relative overflow-hidden px-6 py-3 rounded-full font-medium bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:scale-105 transition-all duration-300">
+          Default Magnetic
+        </button>
+        <!-- Heavy -->
+        <button class="cursor-magnetic-heavy relative overflow-hidden px-6 py-3 rounded-full font-medium bg-slate-700 text-white border border-slate-600">
+          Heavy (Sluggish)
+        </button>
+        <!-- Elastic -->
+        <button class="cursor-magnetic-elastic relative overflow-hidden px-6 py-3 rounded-full font-medium bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-105">
+          Elastic Snap
+        </button>
+        <!-- Repel -->
+        <button class="cursor-repel relative overflow-hidden px-6 py-3 rounded-full font-medium bg-rose-600 text-white shadow-[0_0_20px_rgba(225,29,72,0.3)]">
+          Repel Me
+        </button>
+        <!-- Invert -->
+        <button class="cursor-magnetic-invert relative overflow-hidden px-6 py-3 rounded-full font-medium bg-orange-500 text-white border border-orange-400 hover:scale-105 transition-all duration-300">
+          Inverted Push
+        </button>
+        <!-- X Axis -->
+        <div class="bg-slate-800 p-2 rounded-full w-64">
+          <button class="cursor-magnetic-x relative overflow-hidden px-6 py-2 rounded-full font-medium bg-blue-500 text-white w-full text-center">
+            X-Axis Locked Slider
+          </button>
+        </div>
+        <!-- Corner Snap -->
+        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+          <button class="cursor-corner-snap relative overflow-hidden px-4 py-2 rounded font-medium bg-violet-600 text-white text-sm">
+            Corner Snap
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spotlights & Text Reveal -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 border-b border-slate-700 pb-2">Spotlights & Content Reveal</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="cursor-spotlight bg-slate-800 p-6 rounded-2xl border border-slate-700 h-40 flex flex-col justify-center">
+          <h3 class="text-lg font-medium mb-1">Standard Spotlight</h3>
+          <p class="text-slate-400 text-sm">Radial gradient lighting</p>
+        </div>
+        <div class="cursor-spotlight cursor-spotlight-xl bg-slate-800 p-6 rounded-2xl border border-slate-700 h-40 flex flex-col justify-center">
+          <h3 class="text-lg font-medium mb-1">XL Spotlight</h3>
+          <p class="text-slate-400 text-sm">Massive light radius</p>
+        </div>
+        <div class="cursor-text-wrapper bg-slate-800 p-6 rounded-2xl border border-slate-700 h-40 flex flex-col justify-center items-center">
+          <h3 class="text-2xl font-black mb-1 cursor-text-reveal cursor-text-reveal-lg">REVEAL ME</h3>
+          <p class="text-slate-400 text-xs">Dynamic text mask</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Reveal & Hover Distortion -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 border-b border-slate-700 pb-2">Media & Distortion</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-3">
+          <div class="p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700 hover:border-indigo-500 transition-colors" data-cursor-img="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400">
+            <h3 class="font-medium text-slate-300">Hover: Abstract Art Reveal</h3>
+          </div>
+          <div class="p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700 hover:border-rose-500 transition-colors" data-cursor-img="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400">
+            <h3 class="font-medium text-slate-300">Hover: Nature Scene Reveal</h3>
+          </div>
+        </div>
+        <div class="cursor-distort bg-gradient-to-br from-teal-400 to-blue-500 p-6 rounded-2xl flex flex-col justify-center items-center shadow-lg shadow-teal-500/20 h-[140px]">
+          <h3 class="text-2xl font-bold text-white mb-2">Liquid Distort</h3>
+          <p class="text-white/80 text-sm font-medium text-center">Move mouse quickly to warp</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blend Modes -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 border-b border-slate-700 pb-2">Blend Mode Inversions (Hover to preview)</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="cursor-difference bg-white text-slate-900 p-4 rounded-xl flex justify-center items-center border border-slate-300 h-24">
+          <h3 class="font-bold">Difference</h3>
+        </div>
+        <div class="cursor-exclusion bg-indigo-600 text-white p-4 rounded-xl flex justify-center items-center h-24">
+          <h3 class="font-bold">Exclusion</h3>
+        </div>
+        <div class="cursor-overlay bg-rose-500 text-white p-4 rounded-xl flex justify-center items-center h-24">
+          <h3 class="font-bold">Overlay</h3>
+        </div>
+        <div class="cursor-color-dodge bg-[url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400')] bg-cover bg-center text-white p-4 rounded-xl flex justify-center items-center h-24 relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/40"></div>
+          <h3 class="font-bold drop-shadow-md relative z-10">Color Dodge</h3>
+        </div>
+        <div class="cursor-saturation bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400')] bg-cover bg-center text-white p-4 rounded-xl flex justify-center items-center h-24 relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/40"></div>
+          <h3 class="font-bold drop-shadow-md relative z-10">Saturation</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Lighting & Followers -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 border-b border-slate-700 pb-2">Lighting & Shapes (Hover to preview)</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="cursor-glow-neon bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Neon Glow</h3>
+        </div>
+        <div class="cursor-rgb-split bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24 overflow-hidden relative">
+          <h3 class="font-bold">RGB Split</h3>
+        </div>
+        <div class="cursor-flashlight bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24 overflow-hidden relative">
+          <h3 class="font-bold z-10 relative">Flashlight</h3>
+        </div>
+        <div class="cursor-scanning-laser bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24 overflow-hidden relative">
+          <h3 class="font-bold z-10 relative">Scanning Laser</h3>
+        </div>
+        <div class="cursor-dashed-orbit bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Dashed Orbit</h3>
+        </div>
+        <div class="cursor-morph bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Morphing</h3>
+        </div>
+        <div class="cursor-crosshair bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Crosshair</h3>
+        </div>
+        <div class="cursor-trail bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Cursor Trail</h3>
+        </div>
+        <div class="cursor-ring bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Cursor Ring</h3>
+        </div>
+        <div class="cursor-ring-double bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Double Ring</h3>
+        </div>
+        <div class="cursor-halo bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Soft Halo</h3>
+        </div>
+        <div class="cursor-lens bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24 overflow-hidden relative">
+          <h3 class="font-bold z-10 relative">Magnifying Lens</h3>
+        </div>
+        <div class="cursor-pulse bg-slate-800 text-white p-4 rounded-xl flex justify-center items-center border border-slate-700 h-24">
+          <h3 class="font-bold">Pulse</h3>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+  <!-- Global Elements -->
+  <!-- The image reveal container is still needed globally for the Image Reveal demo to work -->
+  <div class="cursor-image"></div>
+
+  <!-- Load the ES Module Runtime -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
