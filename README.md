@@ -23,6 +23,12 @@ module.exports = {
 }
 ```
 
+**Tailwind v4 (CSS):**
+```css
+@import "tailwindcss";
+@plugin "tailwindcss-cursor-effects";
+```
+
 ## Initialization (Required)
 
 Because these effects are highly interactive, a tiny client-side JavaScript runtime is required to pipe mouse coordinates to CSS variables and dynamically spawn cursor followers.
@@ -45,6 +51,30 @@ export default function App() {
 
   return <div>{/* Your App */}</div>;
 }
+```
+
+**Plain HTML / Vanilla JS Example:**
+If you are using plain HTML and Live Server, you must import the script as a module at the bottom of your page. *(Note: For Tailwind v4, you also need to include a hidden `cursor-follower` div anywhere in your HTML so the compiler knows to generate the styles).*
+
+```html
+<body>
+  <!-- Your content -->
+  <div class="cursor-exclusion p-8 bg-black text-white">Hover me</div>
+
+  <!-- IMPORTANT FOR TAILWIND V4: Force compile the follower class -->
+  <div class="cursor-follower hidden"></div>
+
+  <!-- Run the initialization script -->
+  <script type="module">
+    // If testing locally (npm install):
+    import { initCursorEffects } from './node_modules/tailwindcss-cursor-effects/dist/runtime.js';
+    
+    // OR if using from CDN:
+    // import { initCursorEffects } from 'https://unpkg.com/tailwindcss-cursor-effects/dist/runtime.js';
+
+    initCursorEffects();
+  </script>
+</body>
 ```
 
 ---

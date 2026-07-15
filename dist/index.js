@@ -1,5 +1,5 @@
 import plugin from "tailwindcss/plugin";
-export default plugin(function ({ addUtilities, matchUtilities, theme }) {
+export default plugin(function ({ addUtilities, addComponents, addBase, matchUtilities, theme }) {
     // 1. Magnetic Utilities
     addUtilities({
         ".cursor-magnetic": {
@@ -162,7 +162,7 @@ export default plugin(function ({ addUtilities, matchUtilities, theme }) {
         }
     });
     // 8. Blend Modes & Inversion
-    addUtilities({
+    addBase({
         ".cursor-follower": {
             position: "fixed",
             top: "0",
@@ -172,55 +172,55 @@ export default plugin(function ({ addUtilities, matchUtilities, theme }) {
             "will-change": "transform",
             transform: "translate(calc(var(--mouse-x, 0px) - 50%), calc(var(--mouse-y, 0px) - 50%))",
         },
-        ".cursor-follower.cursor-difference": {
+        ".cursor-difference.cursor-follower": {
             width: "20px", height: "20px",
             background: "white",
             "mix-blend-mode": "difference",
         },
-        ".cursor-follower.cursor-exclusion": {
+        ".cursor-exclusion.cursor-follower": {
             width: "40px", height: "40px",
             "border": "2px solid white",
             "mix-blend-mode": "exclusion",
         },
-        ".cursor-follower.cursor-overlay": {
+        ".cursor-overlay.cursor-follower": {
             width: "80px", height: "80px",
             background: "white",
             "mix-blend-mode": "overlay",
         },
-        ".cursor-follower.cursor-color-dodge": {
+        ".cursor-color-dodge.cursor-follower": {
             width: "120px", height: "120px",
             background: "radial-gradient(circle, rgba(255,200,50,0.8) 0%, transparent 70%)",
             "mix-blend-mode": "color-dodge",
         },
-        ".cursor-follower.cursor-saturation": {
+        ".cursor-saturation.cursor-follower": {
             width: "150px", height: "150px",
             "backdrop-filter": "saturate(300%)",
         },
     });
     // 9. Advanced Lighting
-    addUtilities({
-        ".cursor-follower.cursor-glow-neon, .cursor-follower.cursor-flashlight, .cursor-follower.cursor-scanning-laser, .cursor-follower.cursor-rgb-split": {
+    addBase({
+        ".cursor-glow-neon.cursor-follower, .cursor-flashlight.cursor-follower, .cursor-scanning-laser.cursor-follower, .cursor-rgb-split.cursor-follower": {
             "z-index": "9998",
         },
-        ".cursor-follower.cursor-glow-neon": {
+        ".cursor-glow-neon.cursor-follower": {
             width: "200px", height: "200px",
             background: "radial-gradient(circle, rgba(255, 0, 255, 0.6) 0%, transparent 60%)",
             transform: "translate(calc(var(--mouse-x, 0px) - 50%), calc(var(--mouse-y, 0px) - 50%))",
             filter: "blur(20px)",
         },
-        ".cursor-follower.cursor-flashlight": {
+        ".cursor-flashlight.cursor-follower": {
             width: "100px", height: "100px",
             "border-radius": "50%",
             background: "transparent",
             transform: "translate(calc(var(--mouse-x, 0px) - 50%), calc(var(--mouse-y, 0px) - 50%))",
             "box-shadow": "0 0 0 9999px rgba(0,0,0,0.95)",
         },
-        ".cursor-follower.cursor-scanning-laser": {
+        ".cursor-scanning-laser.cursor-follower": {
             width: "100vw", height: "2px",
             background: "linear-gradient(90deg, transparent, rgba(0,255,0,0.8), transparent)",
             transform: "translateY(var(--mouse-y, 0px))",
         },
-        ".cursor-follower.cursor-rgb-split": {
+        ".cursor-rgb-split.cursor-follower": {
             width: "100px", height: "100px",
             "border-radius": "50%",
             transform: "translate(calc(var(--mouse-x, 0px) - 50%), calc(var(--mouse-y, 0px) - 50%))",
@@ -228,11 +228,11 @@ export default plugin(function ({ addUtilities, matchUtilities, theme }) {
         },
     });
     // 10. Shapes and Follower Geometry
-    addUtilities({
-        ".cursor-follower.cursor-dashed-orbit": {
+    addBase({
+        ".cursor-dashed-orbit.cursor-follower": {
             width: "40px", height: "40px",
         },
-        ".cursor-follower.cursor-dashed-orbit::before": {
+        ".cursor-dashed-orbit.cursor-follower::before": {
             content: '""',
             position: "absolute",
             top: "0", left: "0", width: "100%", height: "100%",
@@ -250,26 +250,26 @@ export default plugin(function ({ addUtilities, matchUtilities, theme }) {
             "transform": "translate(-50%, -50%) scale(1)",
             "transition": "opacity 0.6s ease-out, transform 0.6s ease-out",
         },
-        ".cursor-follower.cursor-crosshair": {
+        ".cursor-crosshair.cursor-follower": {
             width: "40px", height: "40px",
         },
-        ".cursor-follower.cursor-crosshair::before": {
+        ".cursor-crosshair.cursor-follower::before": {
             content: '""', position: "absolute", top: "50%", left: "0", width: "100%", height: "1px", background: "white",
         },
-        ".cursor-follower.cursor-crosshair::after": {
+        ".cursor-crosshair.cursor-follower::after": {
             content: '""', position: "absolute", top: "0", left: "50%", width: "1px", height: "100%", background: "white",
         },
-        ".cursor-follower.cursor-morph": {
+        ".cursor-morph.cursor-follower": {
             width: "20px", height: "20px",
             background: "white",
             "border-radius": "50%",
             "transition": "border-radius 0.3s ease, transform 0.3s ease",
         },
-        ".cursor-follower.cursor-morph-active": {
+        ".cursor-morph.cursor-follower-active": {
             "border-radius": "0%",
             transform: "translate(calc(var(--mouse-x, 0px) - 50%), calc(var(--mouse-y, 0px) - 50%)) scale(2)",
         },
-        ".cursor-follower.cursor-ring, .cursor-follower.cursor-ring-double, .cursor-follower.cursor-halo, .cursor-follower.cursor-lens, .cursor-follower.cursor-pulse": {
+        ".cursor-ring.cursor-follower, .cursor-ring-double.cursor-follower, .cursor-halo.cursor-follower, .cursor-lens.cursor-follower, .cursor-pulse.cursor-follower": {
             "border-radius": "50%",
         },
         ".cursor-ripple-effect": {
@@ -282,32 +282,32 @@ export default plugin(function ({ addUtilities, matchUtilities, theme }) {
             transform: "translate(-50%, -50%) scale(0)",
             transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
         },
-        ".cursor-follower.cursor-ring": {
+        ".cursor-ring.cursor-follower": {
             width: "40px", height: "40px",
             border: "2px solid white",
             background: "transparent",
         },
-        ".cursor-follower.cursor-ring-double": {
+        ".cursor-ring-double.cursor-follower": {
             width: "60px", height: "60px",
             border: "1px solid rgba(255,255,255,0.5)",
             background: "transparent",
         },
-        ".cursor-follower.cursor-ring-double::before": {
+        ".cursor-ring-double.cursor-follower::before": {
             content: '""', position: "absolute", top: "50%", left: "50%",
             width: "30px", height: "30px", border: "2px solid white", "border-radius": "50%",
             transform: "translate(-50%, -50%)",
         },
-        ".cursor-follower.cursor-halo": {
+        ".cursor-halo.cursor-follower": {
             width: "100px", height: "100px",
             background: "rgba(255,255,255,0.1)",
             filter: "blur(10px)",
         },
-        ".cursor-follower.cursor-lens": {
+        ".cursor-lens.cursor-follower": {
             width: "80px", height: "80px",
             "backdrop-filter": "contrast(1.5) saturate(1.5) blur(2px)",
             border: "1px solid rgba(255,255,255,0.2)",
         },
-        ".cursor-follower.cursor-pulse": {
+        ".cursor-pulse.cursor-follower": {
             width: "30px", height: "30px",
             background: "white",
             animation: "cursor-pulse-anim 1.5s ease-in-out infinite",
