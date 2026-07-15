@@ -139,6 +139,7 @@ Applies a real-time liquid/fractal SVG noise distortion to the element based on 
 
 ### 8. Image Reveal
 Hovering over specific elements will reveal a floating image that follows the cursor.
+**Note:** Unlike other effects that work simply by adding a class, for the image reveal effect you **must** include the `<div class="cursor-image"></div>` container somewhere in your HTML for it to work.
 - `cursor-image` (Global container)
 - `data-cursor-img="url"` (Target element attribute)
 
