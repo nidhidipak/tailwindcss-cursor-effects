@@ -1,5 +1,6 @@
 # tailwindcss-cursor-effects
 
+
 A highly advanced Tailwind CSS plugin that provides out-of-the-box interactive cursor experiences. Bring your website to life with magnetic buttons, liquid distortions, blend-mode followers, and geometric shapes just by adding a Tailwind utility class.
 
 Framework agnostic, highly performant, and fully safe for Server-Side Rendering (SSR) environments like Next.js, Nuxt, and SvelteKit.
@@ -192,6 +193,10 @@ Leaves a fading trail of particles behind the cursor as it moves.
 ```
 
 ---
+
+## 🎨 Demo
+
+[Check out the live demo here!](https://tailwindcss-cursor-effects.vercel.app/)
 
 ## Developer Experience (Playground)
 This repository includes a full playground. You can clone the repo, run `npm install`, and then `npm run playground` to experiment with all the effects live in your browser!
