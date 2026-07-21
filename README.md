@@ -1,202 +1,293 @@
-# tailwindcss-cursor-effects
+<div align="center">
 
+# 🖱️ tailwindcss-cursor-effects
 
-A highly advanced Tailwind CSS plugin that provides out-of-the-box interactive cursor experiences. Bring your website to life with magnetic buttons, liquid distortions, blend-mode followers, and geometric shapes just by adding a Tailwind utility class.
+Create interactive cursor effects using simple Tailwind CSS utility classes—no custom CSS required.
 
-Framework agnostic, highly performant, and fully safe for Server-Side Rendering (SSR) environments like Next.js, Nuxt, and SvelteKit.
+✨ Magnetic Buttons • 🎯 Spotlights • 💫 Cursor Followers • 🌊 Liquid Distortion • 🚀 Tailwind CSS v3 & v4
 
-## Installation
+[![NPM Version](https://img.shields.io/npm/v/tailwindcss-cursor-effects?style=flat-square&logo=npm)](https://www.npmjs.com/package/tailwindcss-cursor-effects)
+[![NPM Downloads](https://img.shields.io/npm/dt/tailwindcss-cursor-effects?style=flat-square&logo=npm)](https://www.npmjs.com/package/tailwindcss-cursor-effects)
+[![License](https://img.shields.io/npm/l/tailwindcss-cursor-effects?style=flat-square)](LICENSE)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v3%20%26%20v4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-Install the plugin from npm:
+</div>
+
+---
+
+# ✨ Why?
+
+Normally, creating advanced cursor interactions requires custom JavaScript, CSS, and lots of event handling.
+
+```html
+<button class="custom-cursor"></button>
+```
+
+With **tailwindcss-cursor-effects**, simply add a utility class.
+
+```html
+<button class="cursor-magnetic"></button>
+```
+
+No custom CSS.
+
+No animation libraries.
+
+Just Tailwind classes.
+
+Works with every framework.
+
+---
+
+# ✨ Features
+
+- 🖱️ Interactive cursor followers
+- 🧲 Magnetic buttons
+- 💡 Spotlight effects
+- 🌊 Liquid distortions
+- 🎨 Blend mode cursors
+- 🖼 Image reveal cursor
+- ✨ Cursor trails
+- ⚡ High performance
+- 🧩 SSR friendly
+- ✅ Tailwind CSS v3 & v4
+
+---
+
+# 🌍 Works With
+
+- HTML
+- React
+- Next.js
+- Vue
+- Nuxt
+- Angular
+- Svelte
+- Astro
+- Remix
+- Laravel
+- WordPress
+- SolidJS
+- Qwik
+- Any Tailwind CSS project
+
+---
+
+# 📦 Installation
+
+### npm
 
 ```bash
 npm install tailwindcss-cursor-effects
 ```
 
-Then add the plugin to your `tailwind.config.js` (for Tailwind v3) or import it directly (for Tailwind v4).
+### pnpm
 
-**Tailwind v3 (`tailwind.config.js`):**
-```javascript
-module.exports = {
-  plugins: [
-    require('tailwindcss-cursor-effects'),
-  ],
-}
+```bash
+pnpm add tailwindcss-cursor-effects
 ```
 
-**Tailwind v4 (CSS):**
+### yarn
+
+```bash
+yarn add tailwindcss-cursor-effects
+```
+
+---
+
+# 🚀 Setup
+
+## Tailwind CSS v4
+
 ```css
 @import "tailwindcss";
+
 @plugin "tailwindcss-cursor-effects";
 ```
 
-## Initialization (Required)
+---
 
-Because these effects are highly interactive, a tiny client-side JavaScript runtime is required to pipe mouse coordinates to CSS variables and dynamically spawn cursor followers.
+## Tailwind CSS v3
 
-Import and run the initializer in your client-side entry file. The function returns a `cleanup()` method, making it perfectly safe for SPAs and React `useEffect` hooks to prevent memory leaks during component unmounting.
+```js
+module.exports = {
+  plugins: [
+    require("tailwindcss-cursor-effects"),
+  ],
+};
+```
 
-**React / Next.js Example:**
+---
+
+# ⚡ Initialize Runtime
+
+Import the runtime once in your application.
+
 ```jsx
-import { useEffect } from 'react';
-import { initCursorEffects } from 'tailwindcss-cursor-effects/dist/runtime';
+import { useEffect } from "react";
+import { initCursorEffects } from "tailwindcss-cursor-effects/dist/runtime";
 
 export default function App() {
   useEffect(() => {
-    // Initialize effects and save the cleanup function
     const cleanup = initCursorEffects();
-    
-    // Cleanup on unmount
     return () => cleanup();
   }, []);
 
-  return <div>{/* Your App */}</div>;
+  return <YourApp />;
 }
 ```
 
-**Plain HTML / Vanilla JS Example:**
-If you are using plain HTML and Live Server, you must import the script as a module at the bottom of your page. *(Note: For Tailwind v4, you also need to include a hidden `cursor-follower` div anywhere in your HTML so the compiler knows to generate the styles).*
-
-```html
-<body>
-  <!-- Your content -->
-  <div class="cursor-exclusion p-8 bg-black text-white">Hover me</div>
-
-  <!-- IMPORTANT FOR TAILWIND V4: Force compile the follower class -->
-  <div class="cursor-follower hidden"></div>
-
-  <!-- Run the initialization script -->
-  <script type="module">
-    // If testing locally (npm install):
-    import { initCursorEffects } from './node_modules/tailwindcss-cursor-effects/dist/runtime.js';
-    
-    // OR if using from CDN:
-    // import { initCursorEffects } from 'https://unpkg.com/tailwindcss-cursor-effects/dist/runtime.js';
-
-    initCursorEffects();
-  </script>
-</body>
-```
-
 ---
 
-## Available Utilities
+# 🎨 Examples
 
-### 1. Geometric & Awwwards Followers
-Applying these classes to any container will automatically spawn a custom cursor shape that follows your mouse whenever you hover over the element. *Zero extra HTML nested divs needed!*
-
-- `cursor-ring`, `cursor-ring-double`
-- `cursor-halo`, `cursor-lens`, `cursor-pulse`
-- `cursor-crosshair`, `cursor-dashed-orbit`, `cursor-morph`
+## Magnetic Button
 
 ```html
-<!-- A double-ring cursor will follow your mouse when hovering this div -->
-<div class="cursor-ring-double p-8 bg-slate-900 rounded-xl">
-  Hover me for a double ring cursor!
-</div>
-```
-
-### 2. Blend Mode Inversions
-Create stunning typography and visual contrast by inverting the colors beneath the cursor.
-- `cursor-difference`
-- `cursor-exclusion`
-- `cursor-overlay`
-- `cursor-color-dodge`
-- `cursor-saturation`
-
-```html
-<div class="cursor-difference bg-white text-black p-8">
-  The cursor will invert these colors on hover!
-</div>
-```
-
-### 3. Advanced Lighting
-Turn the user's cursor into a light source.
-- `cursor-glow-neon`
-- `cursor-rgb-split`
-- `cursor-flashlight`
-- `cursor-scanning-laser`
-
-```html
-<div class="cursor-flashlight bg-slate-900 text-white p-8 overflow-hidden">
-  Everything is dark except where you hover!
-</div>
-```
-
-### 4. Magnetic & Physics Buttons
-Makes an element pull towards the user's cursor on hover. Great for CTA buttons!
-- `cursor-magnetic`, `cursor-magnetic-heavy`, `cursor-magnetic-elastic`
-- `cursor-repel` (pushes away), `cursor-magnetic-invert`
-- `cursor-magnetic-x` (locks to X-axis), `cursor-corner-snap`
-
-```html
-<button class="cursor-magnetic px-6 py-2 bg-indigo-500 rounded-full text-white">
-  I pull towards your mouse!
+<button class="cursor-magnetic">
+  Hover me
 </button>
 ```
 
-### 5. Spotlight Cursor
-Applies a radial spotlight gradient that follows the cursor *inside* the element boundaries.
-- `cursor-spotlight`, `cursor-spotlight-sm`, `cursor-spotlight-xl`
+---
+
+## Cursor Ring
 
 ```html
-<div class="cursor-spotlight bg-slate-900 border border-slate-700 p-6 rounded-xl">
-  Spotlight Card
-</div>
-```
-
-### 6. Text Reveal
-Reveals text color dynamically based on the mouse cursor's position, creating a scratch-off or mask effect.
-- `cursor-text-reveal`, `cursor-text-reveal-lg`
-- `cursor-text-wrapper` (Add to parent container to track mouse across the whole box)
-
-```html
-<div class="cursor-text-wrapper bg-slate-900 p-8 rounded-xl">
-  <h1 class="cursor-text-reveal text-6xl font-black">
-    Hover over the box to reveal!
-  </h1>
-</div>
-```
-
-### 7. Hover Distortion (Liquid Effect)
-Applies a real-time liquid/fractal SVG noise distortion to the element based on how fast the cursor is moving over it.
-- `cursor-distort`
-
-```html
-<div class="cursor-distort bg-blue-500 text-white p-8 rounded-xl">
-  Move your mouse fast over me!
-</div>
-```
-
-### 8. Image Reveal
-Hovering over specific elements will reveal a floating image that follows the cursor.
-**Note:** Unlike other effects that work simply by adding a class, for the image reveal effect you **must** include the `<div class="cursor-image"></div>` container somewhere in your HTML for it to work.
-- `cursor-image` (Global container)
-- `data-cursor-img="url"` (Target element attribute)
-
-```html
-<!-- 1. Place the reveal container ANYWHERE in your DOM -->
-<div class="cursor-image"></div>
-
-<!-- 2. Add the data attribute to your hover targets -->
-<a href="#" data-cursor-img="https://images.unsplash.com/photo-123...">Hover to reveal image</a>
-```
-
-### 9. Cursor Trail
-Leaves a fading trail of particles behind the cursor as it moves.
-- `cursor-trail`
-
-```html
-<div class="cursor-trail p-8 bg-slate-900">
-  Move your mouse here to see a particle trail!
+<div class="cursor-ring">
+  Hover here
 </div>
 ```
 
 ---
 
-## 🎨 Demo
+## Spotlight
 
-[Check out the live demo here!](https://tailwindcss-cursor-effects.vercel.app/)
+```html
+<div class="cursor-spotlight">
+  Spotlight Effect
+</div>
+```
 
-## Developer Experience (Playground)
-This repository includes a full playground. You can clone the repo, run `npm install`, and then `npm run playground` to experiment with all the effects live in your browser!
+---
+
+## Flashlight
+
+```html
+<div class="cursor-flashlight">
+  Flashlight Effect
+</div>
+```
+
+---
+
+## Text Reveal
+
+```html
+<div class="cursor-text-wrapper">
+    <h1 class="cursor-text-reveal">
+        Hello World
+    </h1>
+</div>
+```
+
+---
+
+## Image Reveal
+
+```html
+<div class="cursor-image"></div>
+
+<a
+  data-cursor-img="/image.jpg">
+  Hover Me
+</a>
+```
+
+---
+
+## Cursor Trail
+
+```html
+<div class="cursor-trail">
+  Move your mouse
+</div>
+```
+
+---
+
+## Liquid Distortion
+
+```html
+<div class="cursor-distort">
+  Hover Me
+</div>
+```
+
+---
+
+# 📚 Available Utilities
+
+| Category | Classes |
+|----------|----------|
+| Cursor Followers | `cursor-ring`, `cursor-ring-double`, `cursor-halo`, `cursor-pulse`, `cursor-crosshair`, `cursor-lens`, `cursor-morph`, `cursor-dashed-orbit` |
+| Blend Modes | `cursor-difference`, `cursor-exclusion`, `cursor-overlay`, `cursor-color-dodge`, `cursor-saturation` |
+| Lighting | `cursor-glow-neon`, `cursor-flashlight`, `cursor-rgb-split`, `cursor-scanning-laser` |
+| Magnetic | `cursor-magnetic`, `cursor-magnetic-heavy`, `cursor-magnetic-elastic`, `cursor-repel`, `cursor-corner-snap`, `cursor-magnetic-invert`, `cursor-magnetic-x` |
+| Spotlight | `cursor-spotlight`, `cursor-spotlight-sm`, `cursor-spotlight-xl` |
+| Text Reveal | `cursor-text-wrapper`, `cursor-text-reveal`, `cursor-text-reveal-lg` |
+| Distortion | `cursor-distort` |
+| Image Reveal | `cursor-image` |
+| Trail | `cursor-trail` |
+
+---
+
+# 🎥 Demo
+
+👉 https://tailwindcss-cursor-effects.vercel.app
+
+---
+
+# 🧪 Playground
+
+Clone the repository and start the playground.
+
+```bash
+git clone https://github.com/nidhidipak/tailwindcss-cursor-effects
+
+cd tailwindcss-cursor-effects
+
+npm install
+
+npm run playground
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions, issues and feature requests are welcome.
+
+1. Fork the repository
+
+2. Create a feature branch
+
+3. Commit your changes
+
+4. Open a Pull Request
+
+---
+
+# 📄 License
+
+MIT License.
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Nidhi Patel**
+
+⭐ If this project helps you, please consider giving it a star.
+
+</div>
